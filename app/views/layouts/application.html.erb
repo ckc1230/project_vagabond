@@ -9,9 +9,17 @@
   </head>
 
   <body>
-  	<h1> Trekkster </h1>
-  	<%= link_to "Sign In" %>
-  	<%= link_to "Sign Up" %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+        	<header> <h1>Trekkster</h1>
+        	<%= link_to "Sign In", root_path, :class => "link pull-right" %> 
+          <%= link_to "Sign Up", root_path, :class => "link pull-right" %>
+          </header>
+        </div>
+      </div>
+    </div>
     <%= yield %>
+
   </body>
 </html>
