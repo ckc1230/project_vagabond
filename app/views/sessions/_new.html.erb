@@ -1,0 +1,37 @@
+<!--Add Book Modal-->
+<div id="login-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Log In!</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_tag do %>
+                    <div class="container well margin-top-20 small-container">
+                        <div class="bold margin-top-20">
+                            Email
+                        </div>
+                        <div class="margin-top-20">
+                            <%= text_field_tag :email, nil, required: true, class: "form-control" %>
+                        </div>
+                        <div class="bold margin-top-20">
+                            Password
+                        </div>
+                        <div class="margin-top-20">
+                            <%= password_field_tag :password, nil, required: true, class: "form-control" %>
+                        </div>
+                        <div class="margin-top-20">
+                            <a href="/" class="btn btn-default">Cancel</a>
+                            <%= submit_tag "Log In!", class: "btn btn-primary" %>
+                        </div>
+                        <div class="margin-top-10">
+                            <span>Need to sign up? <%= link_to "Sign up here", root_path %> </span>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/Add Book Modal-->
