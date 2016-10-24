@@ -16,3 +16,12 @@ header{
 	margin: 25px 10px 10px 0;
 	font-size: 16px;
 }
+
+.small-container {
+    max-width:800px;
+    width: 550px;
+}
+
+div.modal div.modal-backdrop {
+    z-index: 0;
+}
