@@ -2,20 +2,13 @@
 	<div class="row margin-left-20px">
 		<div class="col-md-3" id="user-section">
 			<div>
-				<img class="img-responsive" src="https://www.what-dog.net/Images/faces2/scroll0015.jpg">
+				<img class="img-responsive" src="<%= @user.profile_image %>">
 			</div>
 			<div id="user-info" class="margin-bottom-20px">
 				<p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
 				<p><strong>Date: </strong>October 24, 2016</p>
 				<p><strong>City: </strong><%= @user.current_city %> </p>
 			</div>
-
-			<div id="user-edit" class="margin-bottom-20px">
-				<p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
-				<p><strong>Date: </strong>October 24, 2016</p>
-				<p><strong>City: </strong><%= @user.current_city %> </p>
-			</div>
-
 			<button class="btn-default btn-block btn">Edit Profile</button>
 			<button class="btn-default btn-block btn" style="display: none;">Save Changes</button>
 		</div>

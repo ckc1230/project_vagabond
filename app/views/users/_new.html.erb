@@ -1,0 +1,61 @@
+<!--Add Book Modal-->
+<div id="sign-up-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Sign Up!</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for (@user = User.new) do |f| %>
+                    <div class="container well margin-top-20 small-container">
+                        <div class="bold margin-top-20">
+                            First Name
+                        </div>
+                        <div class="margin-top-20">
+                            <%= f.text_field :first_name, class: "form-control" %>
+                        </div>
+                        <div class="bold margin-top-20">
+                            Last Name
+                        </div>
+                        <div class="margin-top-20">
+                            <%= f.text_field :last_name, class: "form-control" %>
+                        </div>
+                        <div class="bold margin-top-20">
+                            Current City
+                        </div>
+                        <div class="margin-top-20">
+                            <%= f.text_field :current_city, class: "form-control" %>
+                        </div>
+                        <div class="bold margin-top-20">
+                            Profile Photo
+                        </div>
+                        <div class="margin-top-20">
+                            <%= f.text_field :profile_image, class: "form-control" %>
+                        </div>
+                        <div class="bold margin-top-20">
+                            Email
+                        </div>
+                        <div class="margin-top-20">
+                            <%= f.email_field :email, class: "form-control" %>
+                        </div>
+                        <div class="bold margin-top-20">
+                            Password
+                        </div>
+                        <div class="margin-top-20">
+                            <%= f.password_field :password_digest, class: "form-control" %>
+                        </div>
+                        <div class="margin-top-20">
+                            <a href="/" class="btn btn-default">Cancel</a>
+                            <%= f.submit "Create User", class: "btn btn-primary" %>
+                        </div>
+                        <div class="margin-top-10">
+                            <span>Have an account? <%= link_to "Login here", root_path %> </span>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/Add Book Modal-->
