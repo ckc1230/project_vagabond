@@ -14,3 +14,46 @@
  *= require_tree .
  *= require_self
  */
+
+.margin-bottom-20px {
+	margin-bottom: 20px;
+}
+
+.margin-left-20px {
+	margin-left: 30px;
+}
+
+.user-post-header {
+	margin-top: 0px;
+}
+
+#user-section {
+	border: 1px solid #FFB8B1;
+	padding: 20px;
+}
+
+.user-post {
+	margin-left: 30px;
+	margin-bottom: 20px;
+	padding-top: 0px;
+}
+
+#user-info {
+	background: beige;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+#user-edit {
+	background: beige;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.post-button {
+	font: 20px;
+	height: 35px;
+	width: 35px;
+	display: inline-block;
+	margin-right: 20px;
+}
