@@ -25,7 +25,13 @@ $('#cancel-edit-button').on('click', function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
+    $
   });
+
+$('#post-edit-button').on('click', function() {
+  $('.edit-post-text-area').toggle();
+  $('.user-post-text').toggle();
+})
 
   $('.back-arrow').on('click', scrollBackThroughImages);
   $('.forward-arrow').on('click', scrollForwardThroughImages);
