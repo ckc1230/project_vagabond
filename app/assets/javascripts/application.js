@@ -17,7 +17,11 @@
 
 $( document ).ready(function() {
   $('#user-edit-button').on('click', function() {
-    console.log("HI");
+    $('#user-edit').toggle();
+    $('#user-info').toggle();
+    $('#user-edit-button').toggle();
+  });
+$('#cancel-edit-button').on('click', function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();

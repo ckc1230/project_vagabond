@@ -2,8 +2,12 @@
 	<div class="row margin-left-20px">
 		<div class="col-md-3" id="user-section">
 			<div>
-				<img class="img-responsive" src="<%= @user.profile_image %>">
-			</div>
+
+  			<%= image_tag @user.photo(:small), class: "img-responsive" %>
+ 
+<!-- 		<img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->		
+
+ 			</div>
 			<div id="user-info">
 				<p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
 				<p><strong>City: </strong><%= @user.current_city %> </p>
@@ -11,15 +15,20 @@
 			</div>
 
 			<div id="user-edit" style="display: none;">
-				<%= form_for(@user) do |f|  %>
-				<p><strong>First Name: </strong>
-					<%= f.text_field :first_name, class: "form-control" %></p>
-				<p><strong>Last Name: </strong>
-					<%= f.text_field :last_name, class: "form-control"%></p>
-				<p><strong>City: </strong>
-					<%= f.text_field :current_city, class: "form-control" %></p>
-					<br>
-					<%= f.submit "Save Changes", class: "btn btn-primary form-control" %>
+				<%= form_for(@user, :html => { :multipart => true }) do |f|  %>
+				<p class="edit-user-field"><strong>First Name: </strong>
+					<%= f.text_field :first_name, class: "form-control input-sm" %></p>
+				<p class="edit-user-field"><strong>Last Name: </strong>
+					<%= f.text_field :last_name, class: "form-control input-sm"%></p>
+				<p class="edit-user-field"><strong>City: </strong>
+					<%= f.text_field :current_city, class: "form-control input-sm" %></p>
+				<p class="edit-user-field"><strong>Profile Image: </strong>
+					<%= f.file_field :photo, class: "input-sm" %></p>
+				<footer class="pull-right">
+					<%= button_tag "Reset", type: :reset %>
+					<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
+				</footer>
+				<div class="clearfix"></div>
 				<% end  %>
 			</div>
 			<button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
@@ -28,9 +37,7 @@
 		<div class="col-md-8">
 			<div class="row">
 				<div class="col-md-12 user-post">
-					<header>
-						<h4 class="user-post-header">Chinatown Eats</h4>
-					</header>
+					<h4 class="user-post-header">Chinatown Eats</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -54,9 +61,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 user-post">
-					<header>
-						<h4  class="user-post-header">Chinatown Eats</h4>
-					</header>
+					<h4  class="user-post-header">Chinatown Eats</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -80,9 +85,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 user-post">
-					<header>
-						<h4 class="user-post-header">Chinatown Eats</h4>
-					</header>
+					<h4 class="user-post-header">Chinatown Eats</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
