@@ -5,8 +5,8 @@ class PostsController < ApplicationController
 
 	def create
 		post = current_user
-						.posts
-						.create(post_params)
+		.posts
+		.create(post_params)
 
 		if post.valid?
         redirect_to current_user
