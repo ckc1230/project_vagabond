@@ -3,7 +3,7 @@
 		<div class="col-md-3" id="user-section">
 			<div>
 
-  			<%= image_tag @user.photo(:small), class: "img-responsive" %>
+  			<%= image_tag @user.photo(:small), class: "img-responsive center-block" %>
  
 <!-- 		<img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->		
 
@@ -43,6 +43,11 @@
 					</a>
 					<p class="user-post-text"><%= post.post_text %></p>
 
+					<%= form_for post do |f| %>
+						<%= f.text_area :post_text %>
+						<%= f.submit "Save Changes", class: "btn btn-primary" %>
+					<% end  %>
+
 					<textarea class="form-control edit-post-text-area" style="display: none;"><%= post.post_text %></textarea>
  					<footer>
 						<span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
@@ -51,7 +56,7 @@
  								method: :delete, class: "btn btn-sm btn-danger" %>
 						</div>
 						<div class="post-button pull-right">
-							<button id="post-edit-button" class="btn btn-sm btn-default">Edit</button>
+							<button class="btn btn-sm btn-default post-edit-button">Edit</button>
 						</div>
 					</footer>
 				</div>
