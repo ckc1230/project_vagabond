@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  
 	def show
-		@user = User.find(params[:id])
+		@user = current_user
 	end
 
 	def new
@@ -10,11 +10,12 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.create(user_params)
+		session[:user_id] = @user.id
 		redirect_to user_path(@user)
 	end
 	
 	def update
-		 user = User.find(params[:id]).update(user_params)
+		 user = current_user.update(user_params)
 		 redirect_to user_path
 	end
 
