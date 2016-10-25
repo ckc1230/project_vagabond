@@ -36,7 +36,7 @@
 
 		<div class="col-md-8">
 		<% @user.posts.each do |post|  %>
-			<% @city = City.find(post.city_id) %>
+
 			<div class="row">
 				<div class="col-md-12 user-post">
 					<a href="/users/<%= @user.id %>/posts/<%= post.id %>">
