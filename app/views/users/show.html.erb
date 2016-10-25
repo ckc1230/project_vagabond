@@ -1,70 +1,62 @@
 <div class="container">
-	<div class="row margin-left-20px">
-		<div class="col-md-3" id="user-section">
-			<div>
-  			<%= image_tag @user.photo(:small), class: "img-responsive" %>
+    <div class="row margin-left-20px">
+        <div class="col-md-3" id="user-section">
+            <div class="clearfix">
+            <%= image_tag @user.photo(:small), class: "img-responsive" %>
  
-				<!-- 		<img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->		
- 			</div>
+<!--         <img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->       
+            </div>
+            <div id="user-info">
+                <p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
+                <p><strong>City: </strong><%= @user.current_city %> </p>
+                <p><strong>Joined: </strong><%= @user.created_at.strftime("%b. %d, %Y") %></p>
+            </div>
+            <div id="user-edit" style="display: none;">
+                <%= form_for(@user, :html => { :multipart => true }) do |f|  %>
+                <p class="edit-user-field"><strong>First Name: </strong>
+                    <%= f.text_field :first_name, class: "form-control input-sm" %></p>
+                <p class="edit-user-field"><strong>Last Name: </strong>
+                    <%= f.text_field :last_name, class: "form-control input-sm"%></p>
+                <p class="edit-user-field"><strong>City: </strong>
+                    <%= f.text_field :current_city, class: "form-control input-sm" %></p>
+                <p class="edit-user-field"><strong>Profile Image: </strong>
+                    <%= f.file_field :photo, class: "input-sm" %></p>
+                <footer class="pull-right">
+                    <%= button_tag "Reset", type: :reset %>
+                    <%= f.submit "Save", class: "btn btn-primary btn-sm" %>
+                </footer>
+                <div class="clearfix"></div>
+                <% end  %>
+            </div>
+            <button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
+        </div>
 
-			<div id="user-info">
-				<p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
-				<p><strong>City: </strong><%= @user.current_city %> </p>
-				<p><strong>Joined: </strong><%= @user.created_at.strftime("%b. %d, %Y") %></p>
-			</div>
+        <!--One Post-->
+        <% @user.posts.each do |post| %>
 
-			<div id="user-edit" style="display: none;">
-				<%= form_for(@user, :html => { :multipart => true }) do |f|  %>
-				<p class="edit-user-field"><strong>First Name: </strong>
-					<%= f.text_field :first_name, class: "form-control input-sm" %></p>
-				<p class="edit-user-field"><strong>Last Name: </strong>
-					<%= f.text_field :last_name, class: "form-control input-sm"%></p>
-				<p class="edit-user-field"><strong>City: </strong>
-					<%= f.text_field :current_city, class: "form-control input-sm" %></p>
-				<p class="edit-user-field"><strong>Profile Image: </strong>
-					<%= f.file_field :photo, class: "input-sm" %></p>
-					<footer class="pull-right">
-						<%= button_tag "Reset", type: :reset %>
-						<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
-					</footer>
-					<div class="clearfix"></div>
-				<% end  %>
-			</div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12 user-post">
+                    <h4 class="user-post-header"><%= post.title %></h4>
+ 										<p><%= post.post_text %></p>
+                    <footer>
+                        <span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
+                        <div class="post-button pull-right">
+                            <a href="#">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>                  
+                        </div>
+                        <div class="post-button pull-right">
+                            <a href="#">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
 
-				<button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
-		</div>
-
-		<%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-left" "btn-block"%>
-
-		<% @user.posts.each do |post| %>
-		<!--One Post-->
-		<div class="container">
-			<div class="row margin-top-20 post-container">
-				<div class="col-sm-9">
-					<div class="margin-top-20">
-						<span><%= post.title %></span>
-					</div>
-					<div>
-					<span><%= post.post_text %></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<% end %>
-		<!--/One Post-->
-
-		<footer>
-			<span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
-			<div class="post-button pull-right">
-				<a href="#">
-					<span class="glyphicon glyphicon-trash"></span>
-				</a>					
-			</div>
-			<div class="post-button pull-right">
-				<a href="#">
-					<span class="glyphicon glyphicon-edit"></span>
-				</a>
-			</div>
-		</footer>
-	</div>
+        <% end %>
+        <!--/One Post-->
+    </div>
 </div>
