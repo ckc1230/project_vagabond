@@ -10,18 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025043629) do
+ActiveRecord::Schema.define(version: 20161025172452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.integer  "users_id"
     t.text     "post_text"
-    t.string   "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "city_id"
+    t.index ["city_id"], name: "index_posts_on_city_id", using: :btree
     t.index ["users_id"], name: "index_posts_on_users_id", using: :btree
   end
 
@@ -40,5 +48,6 @@ ActiveRecord::Schema.define(version: 20161025043629) do
     t.datetime "photo_updated_at"
   end
 
+  add_foreign_key "posts", "cities"
   add_foreign_key "posts", "users", column: "users_id"
 end
