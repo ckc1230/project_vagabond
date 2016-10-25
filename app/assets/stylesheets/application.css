@@ -43,7 +43,10 @@
 	margin-top: 20px;
 	padding: 10px;
 	margin-bottom: 20px;
+}
 
+.edit-user-field {
+	margin-bottom: 0px;
 }
 
 #user-edit {
