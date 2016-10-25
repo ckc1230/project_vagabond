@@ -16,7 +16,7 @@
 					<h4 class="user-post-header"><%= @post.title %></h4>
 					<p><%= @post.post_text %></p>
 					<footer>
-						<span>Post by <a href="/users/<%= @user.id %>"> <%= @user.first_name %> <%= @user.last_name %></a></span>
+						<span>Post by <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %> for <%= link_to "#{@city.name}", city_path(@city)%> </span>
 					</footer>
 				</div>
 			</div>			
