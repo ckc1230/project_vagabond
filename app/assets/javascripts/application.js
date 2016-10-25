@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$( document ).ready(function() {
+  $('#user-edit-button').on('click', function() {
+    console.log("HI");
+    $('#user-edit').toggle();
+    $('#user-info').toggle();
+    $('#user-edit-button').toggle();
+  });
+});
+
