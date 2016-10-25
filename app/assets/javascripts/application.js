@@ -27,10 +27,16 @@ $( document ).on("turbolinks:load",function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
+    $
   });
   $('h1').on('click', function(){
   	$(location).attr('href', "/")
   });
+
+$('#post-edit-button').on('click', function() {
+  $('.edit-post-text-area').toggle();
+  $('.user-post-text').toggle();
+})
 
   $('.back-arrow').on('click', scrollBackThroughImages);
   $('.forward-arrow').on('click', scrollForwardThroughImages);
