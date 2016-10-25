@@ -11,17 +11,19 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require turbolinks
 
-$( document ).ready(function() {
+$( document ).on("turbolinks:load",function() {
   $('#user-edit-button').on('click', function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
   });
-$('#cancel-edit-button').on('click', function() {
+	$('#cancel-edit-button').on('click', function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
@@ -61,8 +63,10 @@ function scrollForwardThroughImages(){
 function hideImagesExceptFirstOne(){
 	var photoArray = $('.cover-photo');
 	if (photoArray.length > 1) {
-		for (i = 1; i < photoArray.length; i++){
-			$(photoArray[i]).toggle();
+		for (i = 0; i < photoArray.length; i++){
+			if(i !== photoIndex){
+				$(photoArray[i]).toggle();
+			}
 		}		
 	}
 }
