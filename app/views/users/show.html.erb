@@ -1,16 +1,19 @@
 <div class="container">
     <div class="row margin-left-20px">
         <div class="col-md-3" id="user-section">
-            <div class="clearfix">
+            <div>
+
             <%= image_tag @user.photo(:small), class: "img-responsive" %>
  
-<!--         <img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->       
+<!--        <img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->      
+
             </div>
             <div id="user-info">
-                <p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
-                <p><strong>City: </strong><%= @user.current_city %> </p>
-                <p><strong>Joined: </strong><%= @user.created_at.strftime("%b. %d, %Y") %></p>
+                <p><strong>Name: </strong><span class="pull-right"><%= @user.first_name %> <%= @user.last_name %></span></p>
+                <p><strong>City: </strong><span class="pull-right"><%= @user.current_city %></span></p>
+                <p><strong>Joined: </strong><span class="pull-right"><%= @user.created_at.strftime("%b. %d, %Y") %></span></p>
             </div>
+
             <div id="user-edit" style="display: none;">
                 <%= form_for(@user, :html => { :multipart => true }) do |f|  %>
                 <p class="edit-user-field"><strong>First Name: </strong>
@@ -31,71 +34,34 @@
             <button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
         </div>
 
-<<<<<<< HEAD
-        <!--One Post-->
-        <% @user.posts.each do |post| %>
-=======
- 			</div>
-			<div id="user-info">
-				<p><strong>Name: </strong><span class="pull-right"><%= @user.first_name %> <%= @user.last_name %></span></p>
-				<p><strong>City: </strong><span class="pull-right"><%= @user.current_city %></span></p>
-				<p><strong>Joined: </strong><span class="pull-right"><%= @user.created_at.strftime("%b. %d, %Y") %></span></p>
-			</div>
->>>>>>> master
+        <%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-left" "btn-block"%>
 
         <div class="col-md-8">
+        <% @user.posts.each do |post|  %>
+            <% @city = City.find(post.city_id) %>
             <div class="row">
                 <div class="col-md-12 user-post">
-                    <h4 class="user-post-header"><%= post.title %></h4>
- 										<p><%= post.post_text %></p>
+                    <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
+                        <h4 class="user-post-header"><%= post.title %></h4>
+                    </a>
+                    <p class="user-post-text"><%= post.post_text %></p>
+
+                    <textarea class="form-control edit-post-text-area" style="display: none;"><%= post.post_text %></textarea>
                     <footer>
-                        <span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
+                        <span>Post by <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %> for <%= link_to "#{@city.name}", city_path(@city)%> </span>
                         <div class="post-button pull-right">
-                            <a href="#">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </a>                  
+                            <%= link_to "Delete", delete_post_path(user_id: @user.id, id: post.id), 
+                                method: :delete, class: "btn btn-sm btn-danger" %>
                         </div>
                         <div class="post-button pull-right">
-                            <a href="#">
-                                <span class="glyphicon glyphicon-edit"></span>
-                            </a>
+                            <button id="post-edit-button" class="btn btn-sm btn-default">Edit</button>
                         </div>
                     </footer>
                 </div>
             </div>
+        <% end  %>
+            
+            
         </div>
-
-<<<<<<< HEAD
-        <% end %>
-        <!--/One Post-->
     </div>
-=======
-		<div class="col-md-8">
-		<% @user.posts.each do |post|  %>
-			<div class="row">
-				<div class="col-md-12 user-post">
-					<a href="/users/<%= @user.id %>/posts/<%= post.id %>">
-						<h4 class="user-post-header"><%= post.title %></h4>
-					</a>
-					<p class="user-post-text"><%= post.post_text %></p>
-
-					<textarea class="form-control edit-post-text-area" style="display: none;"><%= post.post_text %></textarea>
- 					<footer>
-						<span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
- 						<div class="post-button pull-right">
- 							<%= link_to "Delete", delete_post_path(user_id: @user.id, id: post.id), 
- 								method: :delete, class: "btn btn-sm btn-danger" %>
-						</div>
-						<div class="post-button pull-right">
-							<button id="post-edit-button" class="btn btn-sm btn-default">Edit</button>
-						</div>
-					</footer>
-				</div>
-			</div>
-		<% end  %>
-			
-			
-		</div>
-	</div>
->>>>>>> master
 </div>
