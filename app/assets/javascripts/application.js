@@ -28,6 +28,9 @@ $( document ).on("turbolinks:load",function() {
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
   });
+  $('h1').on('click', function(){
+  	$(location).attr('href', "/")
+  });
 
   $('.back-arrow').on('click', scrollBackThroughImages);
   $('.forward-arrow').on('click', scrollForwardThroughImages);

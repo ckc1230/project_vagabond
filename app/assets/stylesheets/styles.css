@@ -1,6 +1,7 @@
 h1 {
 	display: inline-block;
 	font-family: 'Poppins', sans-serif;
+	cursor: pointer;
 }
 
 header{
