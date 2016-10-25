@@ -2,12 +2,11 @@
 	<div class="row margin-left-20px">
 		<div class="col-md-3" id="user-section">
 			<div>
-
   			<%= image_tag @user.photo(:small), class: "img-responsive" %>
  
-<!-- 		<img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->		
-
+				<!-- 		<img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->		
  			</div>
+
 			<div id="user-info">
 				<p><strong>Name: </strong><span class="pull-right"><%= @user.first_name %> <%= @user.last_name %></span></p>
 				<p><strong>City: </strong><span class="pull-right"><%= @user.current_city %></span></p>
@@ -24,17 +23,21 @@
 					<%= f.text_field :current_city, class: "form-control input-sm" %></p>
 				<p class="edit-user-field"><strong>Profile Image: </strong>
 					<%= f.file_field :photo, class: "input-sm" %></p>
-				<footer class="pull-right">
-					<%= button_tag "Reset", type: :reset %>
-					<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
-				</footer>
-				<div class="clearfix"></div>
+					<footer class="pull-right">
+						<%= button_tag "Reset", type: :reset %>
+						<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
+					</footer>
+					<div class="clearfix"></div>
 				<% end  %>
 			</div>
-			<button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
+
+				<button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
 		</div>
 
 		<div class="col-md-8">
+		
+		<%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-left" "btn-block"%>
+
 		<% @user.posts.each do |post|  %>
 			<% @city = City.find(post.city_id) %>
 			<div class="row">
