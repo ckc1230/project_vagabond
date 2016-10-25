@@ -29,6 +29,8 @@ $('#cancel-edit-button').on('click', function() {
 
   $('.back-arrow').on('click', scrollBackThroughImages);
   $('.forward-arrow').on('click', scrollForwardThroughImages);
+
+  hideImagesExceptFirstOne();
 });
 
 var photoIndex = 0 
@@ -55,3 +57,13 @@ function scrollForwardThroughImages(){
 	}
 	$(photoArray[photoIndex]).toggle();
 }
+
+function hideImagesExceptFirstOne(){
+	var photoArray = $('.cover-photo');
+	if (photoArray.length > 1) {
+		for (i = 1; i < photoArray.length; i++){
+			$(photoArray[i]).toggle();
+		}		
+	}
+}
+	
