@@ -22,5 +22,32 @@ $( document ).ready(function() {
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
   });
+
+  $('.back-arrow').on('click', scrollBackThroughImages);
+  $('.forward-arrow').on('click', scrollForwardThroughImages);
 });
 
+var photoIndex = 0 
+function scrollBackThroughImages(){
+	var photoArray = $('.cover-photo');
+	$(photoArray[photoIndex]).toggle();
+	if(photoIndex > 0){
+		photoIndex--;	
+	}
+	else{
+		photoIndex = photoArray.length - 1;
+	}
+	$(photoArray[photoIndex]).toggle();
+}
+
+function scrollForwardThroughImages(){
+	var photoArray = $('.cover-photo');
+	$(photoArray[photoIndex]).toggle();
+	if(photoIndex < photoArray.length - 1){
+		photoIndex++;
+	}
+	else {
+		photoIndex = 0;
+	}
+	$(photoArray[photoIndex]).toggle();
+}
