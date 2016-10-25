@@ -2,12 +2,11 @@
 	<div class="row margin-left-20px">
 		<div class="col-md-3" id="user-section">
 			<div>
-
   			<%= image_tag @user.photo(:small), class: "img-responsive" %>
  
-<!-- 		<img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->		
-
+				<!-- 		<img class="img-responsive" src="<%= @user.photo.url %>(:small)">  -->		
  			</div>
+
 			<div id="user-info">
 				<p><strong>Name: </strong><%= @user.first_name %> <%= @user.last_name %></p>
 				<p><strong>City: </strong><%= @user.current_city %> </p>
@@ -24,89 +23,48 @@
 					<%= f.text_field :current_city, class: "form-control input-sm" %></p>
 				<p class="edit-user-field"><strong>Profile Image: </strong>
 					<%= f.file_field :photo, class: "input-sm" %></p>
-				<footer class="pull-right">
-					<%= button_tag "Reset", type: :reset %>
-					<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
-				</footer>
-				<div class="clearfix"></div>
+					<footer class="pull-right">
+						<%= button_tag "Reset", type: :reset %>
+						<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
+					</footer>
+					<div class="clearfix"></div>
 				<% end  %>
 			</div>
-			<button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
+
+				<button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
 		</div>
 
-		<div class="col-md-8">
-			<div class="row">
-				<div class="col-md-12 user-post">
-					<h4 class="user-post-header">Chinatown Eats</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<footer>
-						<span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
-						<div class="post-button pull-right">
-							<a href="#">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>					
-						</div>
-						<div class="post-button pull-right">
-							<a href="#">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-						</div>
-					</footer>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 user-post">
-					<h4  class="user-post-header">Chinatown Eats</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<footer>
-						<span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
-						<div class="post-button pull-right">
-							<a href="#">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>					
-						</div>
-						<div class="post-button pull-right">
-							<a href="#">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-						</div>
-					</footer>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 user-post">
-					<h4 class="user-post-header">Chinatown Eats</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<footer>
-						<span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
-						<div class="post-button pull-right">
-							<a href="#">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>					
-						</div>
-						<div class="post-button pull-right">
-							<a href="#">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-						</div>
-					</footer>
+		<%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-left" "btn-block"%>
+
+		<% @user.posts.each do |post| %>
+		<!--One Post-->
+		<div class="container">
+			<div class="row margin-top-20 post-container">
+				<div class="col-sm-9">
+					<div class="margin-top-20">
+						<span><%= post.title %></span>
+					</div>
+					<div>
+					<span><%= post.post_text %></span>
+					</div>
 				</div>
 			</div>
 		</div>
+		<% end %>
+		<!--/One Post-->
+
+		<footer>
+			<span>Post by <%= @user.first_name %> <%= @user.last_name %></span>
+			<div class="post-button pull-right">
+				<a href="#">
+					<span class="glyphicon glyphicon-trash"></span>
+				</a>					
+			</div>
+			<div class="post-button pull-right">
+				<a href="#">
+					<span class="glyphicon glyphicon-edit"></span>
+				</a>
+			</div>
+		</footer>
 	</div>
 </div>
