@@ -29,10 +29,14 @@
                 <div class="clearfix"></div>
                 <% end  %>
             </div>
-            <button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
+            <% if @user === current_user %>
+                <button id="user-edit-button" class="btn-default btn-block btn">Edit Profile</button>
+            <% end %>
         </div>
 
-        <%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-left" "btn-block"%>
+        <% if @user === current_user %>
+            <%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-left" "btn-block"%>
+        <% end %>
         <!--One Post-->
         
         <div class="col-md-8">
@@ -50,13 +54,15 @@
                     <textarea class="form-control edit-post-text-area" style="display: none;"><%= post.post_text %></textarea>
                     <footer>
                         <span>Post by <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %> for <%= link_to "#{@city.name}", city_path(@city)%> </span>
-                        <div class="post-button pull-right">
-                            <%= link_to "Delete", delete_post_path(user_id: @user.id, id: post.id), 
-                                method: :delete, class: "btn btn-sm btn-danger" %>
-                        </div>
-                        <div class="post-button pull-right">
-                            <button id="post-edit-button" class="btn btn-sm btn-default">Edit</button>
-                        </div>
+                        <% if @user === current_user %>
+                            <div class="post-button pull-right">
+                                <%= link_to "Delete", delete_post_path(user_id: @user.id, id: post.id), 
+                                    method: :delete, class: "btn btn-sm btn-danger" %>
+                            </div>
+                            <div class="post-button pull-right">
+                                <button id="post-edit-button" class="btn btn-sm btn-default">Edit</button>
+                            </div>
+                        <% end %>
                     </footer>
                 </div>
             </div>
