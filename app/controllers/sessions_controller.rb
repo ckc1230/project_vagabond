@@ -16,4 +16,12 @@ class SessionsController < ApplicationController
 		current_user = nil
 		redirect_to root_path
 	end
+
+	def verify_login
+		if User.confirm(params[:email], params[:password])
+			render :status => 200, nothing: true
+		else
+			render :status => 400, nothing: true
+		end
+	end
 end

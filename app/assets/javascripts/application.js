@@ -68,6 +68,30 @@ $( document ).on("turbolinks:load",function() {
   	});
   });
 
+  $('#login_form').on('submit', function(event){
+  	event.preventDefault();
+
+  	var data = {
+			email: $('#email').val(),
+			password: $('#password').val()
+  	};
+
+  	$.ajax({
+  		url: "/sessions/verify_login",
+  		type: "POST",
+  		data: data,
+  		success: function(){
+  			$('#login_form')[0].submit();
+  		},
+  		error: function(){
+  			$(':submit').removeAttr("disabled");
+  			console.log('here');
+  			$('#login-modal').find('.modal-body').prepend("<p class='error'>Incorrect username or password</p>");
+  			$('#login_form').find('#password').val('');
+  		}
+  	});
+  });
+
   hideImagesExceptFirstOne();
 });
 
