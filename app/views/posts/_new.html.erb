@@ -8,6 +8,7 @@
             </div>
             <div class="modal-body">
                 <% if current_user %>
+                    <% @cities = City.all %>
                     <%= form_for ([current_user, current_user.posts.new]) do |f| %>
                         <div class="container well margin-top-20 small-container">
                             <div class="bold margin-top-20">
@@ -15,6 +16,12 @@
                             </div>
                             <div class="margin-top-20">
                                 <%= f.text_field :title, class: "form-control" %>
+                            </div>
+                            <div class="bold margin-top-20">
+                                City
+                            </div>
+                            <div class="margin-top-20">
+                            <%= f.select :city_id, @cities.map {|city| [city.name, city.id]} %>
                             </div>
                             <div class="bold margin-top-20">
                                 Tell us more!
