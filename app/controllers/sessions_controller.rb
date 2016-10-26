@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+	skip_before_action :verify_authenticity_token, only: [:verify_login]
 
 	def create
 		if User.confirm(params[:email], params[:password])
@@ -6,7 +7,6 @@ class SessionsController < ApplicationController
 	      session[:user_id] = user.id
 	      redirect_to user_path(user)
 	    else
-	      flash[:error] = "Error logging in"
 	      redirect_to login_path
 	    end
 	end

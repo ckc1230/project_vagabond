@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_action :verify_authenticity_token, only: [:validate_user]
  
 	def show
 		@user = User.friendly.find(params[:id])
@@ -15,7 +16,6 @@ class UsersController < ApplicationController
 			session[:user_id] = @user.id
 			redirect_to user_path(@user)
 		else
-			flash[:error] = @user.errors.full_messages
 			redirect_to root_path
 		end
 	end
