@@ -67,8 +67,9 @@
                     <% end  %>
                     </div>
 
-                    <footer class="post-footer">
-                        <span>Post by <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %> for <%= link_to "#{@city.name}", city_path(@city)%> </span>
+                    <footer>
+                        <span>Posted: <%= time_ago_in_words(post.created_at) %> ago<br> by <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %> for <%= link_to "#{@city.name}", city_path(@city)%> </span>
+
                         <% if @user === current_user %>
                             <div class="post-button pull-right">
                                 <%= link_to "Delete", delete_post_path(user_id: @user.id, id: post.id), 
