@@ -38,6 +38,10 @@ header{
 	margin-top: 10px;
 }
 
+.error {
+	color: red;
+}
+
 div.modal div.modal-backdrop {
     z-index: 0;
 }

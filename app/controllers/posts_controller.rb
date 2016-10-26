@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	skip_before_action :verify_authenticity_token, only: [:verify_new_post]
 	
 	def new
 	end
@@ -31,6 +32,15 @@ class PostsController < ApplicationController
 	def destroy
 		Post.find(params[:id]).destroy
 		redirect_to user_path(current_user)
+	end
+
+	def verify_new_post
+		@post = current_user.posts.new(post_params)
+		if @post.valid?
+			render :status => 200, nothing: true
+		else
+			render :status => 400, nothing: true
+		end
 	end
 
 	private
