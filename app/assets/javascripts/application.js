@@ -33,13 +33,40 @@ $( document ).on("turbolinks:load",function() {
   	$(location).attr('href', "/")
   });
 
-$('#post-edit-button').on('click', function() {
-  $('.edit-post-text-area').toggle();
-  $('.user-post-text').toggle();
-})
+	$('#post-edit-button').on('click', function() {
+	  $('.edit-post-text-area').toggle();
+	  $('.user-post-text').toggle();
+	})
 
   $('.back-arrow').on('click', scrollBackThroughImages);
   $('.forward-arrow').on('click', scrollForwardThroughImages);
+
+  $('#new_user').on('submit', function(event){
+  	event.preventDefault();
+  	var data = {
+  		user: {
+  			first_name: $('#user_first_name').val(),
+  			last_name: $('#user_last_name').val(),
+  			current_city: $('#user_current_city').val(),
+  			profile_image: $('#user_profile_image').val(),
+  			profile_image: $('#user_profile_image').val(),
+  			email: $('#user_email').val(),
+  			password: $('#user_password').val()
+  		}
+  	};
+  	$.ajax({
+  		url: "/users/validate_user",
+  		type: "POST",
+  		data: data,
+  		success: function(){
+  			$('#new_user')[0].submit();
+  		},
+  		error: function(){
+  			$(':submit').removeAttr("disabled");
+  			$('#sign-up-modal').find('.modal-body').prepend("<p class='error'>please fix errors in the form and resubmit</p>")
+  		}
+  	});
+  });
 
   hideImagesExceptFirstOne();
 });
@@ -80,3 +107,7 @@ function hideImagesExceptFirstOne(){
 	}
 }
 	
+function show_sign_up_modal(){
+	$('#sign-up-modal').toggle();
+	$('#sign-up-modal').toggle();
+}

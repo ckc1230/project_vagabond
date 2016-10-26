@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
 	resources :cities
 	resources :users do
-		resources :posts 
+		resources :posts
+
+		collection do
+			post '/validate_user', to: "users#validate_user"
+		end 
 	end
 
 	post '/login',					to: "sessions#create",				as: "login"
