@@ -2,14 +2,18 @@
     <div class="row margin-left-20px">
         <div class="col-md-3" id="user-section">
             <div>
-
-            <%= image_tag @user.photo(:small), class: "img-responsive" %>
-
+               <%= image_tag @user.photo(:small), class: "img-responsive center-block" %>
             </div>
             <div id="user-info">
                 <p><strong>Name: </strong><span class="pull-right"><%= @user.first_name %> <%= @user.last_name %></span></p>
                 <p><strong>City: </strong><span class="pull-right"><%= @user.current_city %></span></p>
                 <p><strong>Joined: </strong><span class="pull-right"><%= @user.created_at.strftime("%b. %d, %Y") %></span></p>
+                <p class="no-margin-no-padding"><strong>Posted In: </strong></p>
+                <div class="list-unstyled text-right">
+                    <% @posted_cities.each do |f| %>
+                        <li class="align-right"><%= link_to f.name, f %></li>
+                    <% end %>
+                </div>
             </div>
 
             <div id="user-edit" style="display: none;">
@@ -23,7 +27,7 @@
                 <p class="edit-user-field"><strong>Profile Image: </strong>
                     <%= f.file_field :photo, class: "input-sm" %></p>
                 <footer class="pull-right">
-                    <%= button_tag "Reset", type: :reset %>
+                    <%= button_tag "Reset", type: :reset, class: "btn btn-sm btn-default" %>
                     <%= f.submit "Save", class: "btn btn-primary btn-sm" %>
                 </footer>
                 <div class="clearfix"></div>
@@ -37,22 +41,33 @@
         <% if @user === current_user %>
             <%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-left" "btn-block"%>
         <% end %>
-        <!--One Post-->
         
         <div class="col-md-8">
-        <% @user.posts.each do |post|  %>
-            <% @city = City.find(post.city_id) %>
 
+        <!--One Post-->
+            <% @posts.each do |post|  %>
+            <% @city = City.find(post.city_id) %>
             <div class="row">
                 <div class="col-md-12 user-post">
-                    <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
-                        <h4 class="user-post-header"><%= post.title %></h4>
-                    </a>
+                    <div class="user-post-info">
+                        <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
+                            <h4 class="user-post-header"><%= post.title %></h4>
+                        </a>
+                        <p class="user-post-text truncated"><%= post.post_text.truncate(150) %></p>
+                    </div>
 
-                    <p class="user-post-text truncated"><%= post.post_text.truncate(150) %></p>
+                    <div class="edit-post-text-form" style="display: none;">
+                    <%= form_for(post, :url => update_user_post_path(@user, post)) do |f| %>
+                        <label>Title: </label>
+                        <%= f.text_field :title, class: "user-post-header form-control edit-post-text-area" %>
+                         <label>Post: </label>
+                        <%= f.text_area :post_text, class: "form-control edit-post-text-area" %>
+                        <%= f.submit 'Save', class: "custom-btn btn btn-sm btn-success pull-right" %>
+                         <%= button_tag "Reset", type: :reset, class: "custom-btn btn btn-sm btn-default pull-right" %>
+                    <% end  %>
+                    </div>
 
-                    <textarea class="form-control edit-post-text-area" style="display: none;"><%= post.post_text %></textarea>
-                    <footer>
+                    <footer class="post-footer">
                         <span>Post by <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %> for <%= link_to "#{@city.name}", city_path(@city)%> </span>
                         <% if @user === current_user %>
                             <div class="post-button pull-right">
@@ -60,7 +75,7 @@
                                     method: :delete, class: "btn btn-sm btn-danger" %>
                             </div>
                             <div class="post-button pull-right">
-                                <button id="post-edit-button" class="btn btn-sm btn-default">Edit</button>
+                                <button class="post-edit-button btn btn-sm btn-default">Edit</button>
                             </div>
                         <% end %>
                     </footer>
@@ -68,8 +83,13 @@
             </div>
         <% end  %>
             
-            
         </div>
         <!--/One Post-->
     </div>
+       <!--Pagination-->
+        <div class="row text-center">
+            <div class="pagination-footer">
+                <%= will_paginate @posts %>
+            </div>
+        </div>
 </div>

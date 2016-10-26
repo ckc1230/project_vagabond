@@ -42,8 +42,8 @@
 }
 
 .edit-post-text-area {
-	padding-left: 5px;
-	margin: 0px 25px 10px 0px;
+	padding-left: 10px;
+	margin: 0px 25px 10px -10px;
 	resize: none;
 }
 
@@ -56,6 +56,10 @@
 
 .edit-user-field {
 	margin-bottom: 0px;
+}
+
+.custom-btn {
+	margin-right: 10px;
 }
 
 #user-edit {
@@ -71,4 +75,15 @@
 	width: 35px;
 	display: inline-block;
 	margin-right: 20px;
+}
+
+.no-margin-no-padding {
+	margin: 0;
+	padding: 0;
+}
+.pagination-footer {
+	margin: 0px;
+    height: 60px;
+    bottom: 0;
+    width: 100%;
 }
