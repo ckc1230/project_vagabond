@@ -13,6 +13,10 @@
 !/log/.keep
 !/tmp/.keep
 /public/system/
+db/migrate/20161026173507_add_default_photo.rb
+db/migrate/20161026174558_change_default_photo_string.rb
+db/migrate/20161026181140_remove_default_photo_string.rb
+app/assets/images/.DS_Store
 
 # Ignore Byebug command history file.
 .byebug_history

@@ -3,8 +3,9 @@ class UsersController < ApplicationController
 	def show
 		@user = User.friendly.find(params[:id])
 		@posts = @user.posts.paginate(:page => params[:page], :per_page => 3)
-		posted_cities_id = get_cities_id
-		@posted_cities = get_cities(posted_cities_id)
+		@posted_cities_id = get_cities_id
+		@posted_cities = get_cities(@posted_cities_id)
+		@post_count = count_occurences
 	end
 
 	def new
@@ -35,6 +36,14 @@ class UsersController < ApplicationController
 			cities.add(City.find(f))
 		end
 		return cities
+	end
+
+	def count_occurences
+		count_occurences = []
+		@posted_cities_id.each do |f|
+			count_occurences << (Post.all.count(f))
+		end
+		return count_occurences
 	end
 
 	private
