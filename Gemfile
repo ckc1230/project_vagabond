@@ -31,6 +31,8 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 
 gem 'jquery-turbolinks'
 
+gem 'friendly_id', '~> 5.1.0' 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
