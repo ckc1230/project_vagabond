@@ -33,9 +33,10 @@ $( document ).on("turbolinks:load",function() {
   	$(location).attr('href', "/")
   });
 
-	$('#post-edit-button').on('click', function() {
-	  $('.edit-post-text-area').toggle();
-	  $('.user-post-text').toggle();
+	$('.post-edit-button').on('click', function() {
+	  $(this).closest('.user-post').find('.edit-post-text-form').toggle();
+	  $(this).closest('.user-post').find('.user-post-info').toggle();
+	  $(this).closest('.user-post').find('.post-footer').toggle();
 	})
 
   $('.back-arrow').on('click', scrollBackThroughImages);

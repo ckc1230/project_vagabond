@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 	delete 	'/users/:user_id/posts/:id',	to: "posts#destroy",				as: "delete_post"
 	post '/sessions/verify_login',		to: "sessions#verify_login"
 	post '/posts/new_post',						to: "posts#verify_new_post"
+	delete 	'/users/:user_id/posts/:id',	to: "posts#destroy",		as: "delete_post"
+	put '/users/:user_slug/posts/:id', to: "posts#update", 				as: "update_user_post"
 
 end

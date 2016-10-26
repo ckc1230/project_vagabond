@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
-
+gem 'will_paginate', '~> 3.1.0'
 gem 'jquery-turbolinks'
 
 gem 'friendly_id', '~> 5.1.0' 
