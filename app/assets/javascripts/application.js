@@ -34,8 +34,9 @@ $( document ).on("turbolinks:load",function() {
   });
 
 $('.post-edit-button').on('click', function() {
-  $(this).closest('.user-post').find('.edit-post-text-area').toggle();
-  $(this).closest('.user-post').find('.user-post-text').toggle();
+  $(this).closest('.user-post').find('.edit-post-text-form').toggle();
+  $(this).closest('.user-post').find('.user-post-info').toggle();
+  $(this).closest('.user-post').find('.post-footer').toggle();
 })
 
   $('.back-arrow').on('click', scrollBackThroughImages);
