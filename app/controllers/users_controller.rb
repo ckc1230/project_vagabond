@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 			redirect_to root_path
 		end
 
+	end
 		# respond_to do |format|
   #     if @user.save
   #       # Tell the UserMailer to send a welcome email after save
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
   #     end
   #   end
 
-	end
+	
 	
 	def update
 		 user = current_user.update(user_params)
@@ -52,6 +53,7 @@ class UsersController < ApplicationController
 		else
 			render :status => 400, nothing: true
 		end
+	end
 
 	def get_cities_id
 		cities_id = [].to_set

@@ -155,7 +155,7 @@ function newPost(event){
 		url: "/posts/new_post",
 		type: "POST",
 		data: data,
-		success: function(){
+		success: function(json){
 			$('#new_post')[0].submit();
 		},
 		error: function(){
