@@ -1,0 +1,37 @@
+<!-- Add Post Modal -->
+<div id="new-post-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">What's your story?</h4>
+            </div>
+            <div class="modal-body">
+                <% if current_user %>
+                    <%= form_for ([current_user, current_user.posts.new]) do |f| %>
+                        <div class="container well margin-top-20 small-container">
+                            <div class="bold margin-top-20">
+                                Subject
+                            </div>
+                            <div class="margin-top-20">
+                                <%= f.text_field :title, class: "form-control" %>
+                            </div>
+                            <div class="bold margin-top-20">
+                                Tell us more!
+                            </div>
+                            <div class="margin-top-20">
+                                <%= f.text_field :post_text, class: "form-control" %>
+                            </div>
+             
+                            <div class="margin-top-20">
+                                <a href="/" class="btn btn-default">Cancel</a>
+                                <%= f.submit "Submit Post", class: "btn btn-primary" %>
+                            </div>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/Add Post Modal
