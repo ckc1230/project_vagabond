@@ -23,7 +23,7 @@
 						<a href="/users/<%= user.id %>/posts/<%= post.id %>">
 							<h4 class="user-post-header"><%= post.title %></h4>
 						</a>
-						<p><%= post.post_text %></p>
+						<p class="user-post-text truncated"><%= post.post_text.truncate(150) %></p>
 						<footer>
 							<span>Post by <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %> for <%= link_to "#{@city.name}", city_path(@city)%> </span>
 						</footer>
