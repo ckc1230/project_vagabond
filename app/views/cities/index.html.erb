@@ -9,7 +9,7 @@
 
 					<% if city.posts.length > 0 %>
 					<% city_blockquote = city.posts.order("RANDOM()").first  %>
-					<blockquote>"<%= city_blockquote.post_text %>"
+					<blockquote>"<%= city_blockquote.post_text.truncate(225) %>"
 						<footer class="blockquote-footer">
 							<%= User.find(city_blockquote.user_id).first_name %>
 						</footer>
