@@ -58,6 +58,16 @@ $( document ).on("turbolinks:load",function() {
   	$('#sign-up-modal').modal('toggle');
   });
 
+  $('.sign-up-button').on('click', function(event){
+  	event.preventDefault();
+  	$('#sign-up-modal').modal('toggle');
+  });
+
+  $('.log-in-button').on('click', function(event){
+  	event.preventDefault();
+  	$('#login-modal').modal('toggle');
+  });
+
   hideImagesExceptFirstOne();
 });
 

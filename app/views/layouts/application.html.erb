@@ -20,13 +20,13 @@
         <div class="col-md-12">
         	<header> <h1>Trekkster</h1>
           <% if current_user %>
-            <%= link_to "Log Out", login_path, method: :delete, :class => "link pull-right" %>
-            <%= link_to "Profile", user_path(current_user), :class => "link pull-right" %>
+            <%= button_to "Log Out", login_path, method: :delete, :class => "link pull-right btn-secondary" %>
+            <%= button_to "Profile", user_path(current_user), method: :get, :class => "link pull-right btn-secondary" %>
           <% else %>
-          	<%= link_to "Sign In", "#login-modal", "data-toggle" => "modal", :class => "link pull-right" %> 
-            <%= link_to "Sign Up", "#sign-up-modal", "data-toggle" => "modal", :class => "link pull-right" %>
+          	<button type="button" class="link pull-right log-in-button btn btn-secondary">Sign In</button>
+            <button type="button" class="link pull-right sign-up-button btn btn-secondary">Sign Up</button>
           <% end %>
-          <%= link_to "Home", root_path, :class => "link pull-right" %>
+            <%= button_to "Home", root_path, method: :get, :class => "link pull-right btn-secondary" %>
           </header>
         </div>
       </div>
