@@ -36,4 +36,4 @@ To deploy:
 4 - Start using the website!
 
 Trello board link:
-https://trello.com/b/8NcdSkkk/vagabond
+https://trello.com/b/8NcdSkkk/trekkster
