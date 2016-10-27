@@ -49,7 +49,7 @@
             <% @posts.each do |post|  %>
             <% @city = City.find(post.city_id) %>
             <div class="row">
-                <div class="col-md-10 user-post">
+                <div class="col-md-10 user-post col-md-offset-1">
                     <div class="user-post-info">
                         <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
                             <h4 class="user-post-header"><%= post.title %></h4>

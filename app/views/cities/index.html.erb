@@ -2,28 +2,24 @@
 	<div class="row">
 		<div class="col-md-12 photo-container">
 			<% @cities.each do |city| %>
-			<div class="city-display" >
-<!-- 			<a href="#"><img src=<%= city.image_url %>></a>
- -->			<style>
-			  .bk {
-			  	background: url(<%= city.image_url %>);
-			  	min-height:300px;
-			  }
-			</style>
-				<div class="bk">
-				<h1> <%= city.name %> </h1>	
-				</div>
+				<div class="city-display" >
+					<%= link_to image_tag(city.image_url, :class => "cover-photo img-responsive", :id => "#{city.name}"), city_path(city) %>
+					<span class="city-title"> <%= city.name %></span>
+					<div class="arrows"> <span class="back-arrow"> &#9664</span><span class="forward-arrow">&#9654</span>
 
-			<blockquote class="blockquote center-block user-blockquote">
-				<% city_blockquote = city.posts.order("RANDOM()").first  %>
-				<p class="blockquote-quote"><%= city_blockquote.post_text %></p>
-				<footer class="blockquote-footer">
-					<%= User.find(city_blockquote.user_id).first_name %>
-				</footer>
-			</blockquote>
-			</div>
+					<% if city.posts.length > 0 %>
+					<% city_blockquote = city.posts.order("RANDOM()").first  %>
+					<blockquote>"<%= city_blockquote.post_text %>"
+						<footer class="blockquote-footer">
+							<%= User.find(city_blockquote.user_id).first_name %>
+						</footer>
+					</blockquote>
+					<% end %>
+
+
+					</div>
+				</div>	
 			<% end %>
-				<div class="arrows"> <span class="back-arrow"> &#9664</span><span class="forward-arrow">&#9654</span> </div>
-		</div> 
+		</div>
 	</div>
 </div>
