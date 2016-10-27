@@ -58,7 +58,9 @@ class UsersController < ApplicationController
 	def get_cities_id
 		cities_id = [].to_set
 		@user.posts.each do |f|
-			cities_id.add(f.city_id)
+			if f.city_id
+				cities_id.add(f.city_id)
+			end
 		end
 		return cities_id
 	end

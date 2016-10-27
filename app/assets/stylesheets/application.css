@@ -49,9 +49,16 @@ blockquote {
 }
 
 .user-post {
-/*  margin-left: 80px;
-*/  margin-bottom: 20px;
+  margin-bottom: 20px;
   padding: 20px 20px 20px 30px;
+  color: #454545;
+  border-radius: 1px;
+  box-shadow: 1px 1px 4px #454545;
+}
+
+.city-user-post {
+  margin-bottom: 20px;
+  padding: 20px 30px 20px 20px;
   color: #454545;
   border-radius: 1px;
   box-shadow: 1px 1px 4px #454545;
