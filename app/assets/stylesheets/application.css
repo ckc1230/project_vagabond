@@ -14,6 +14,9 @@
  *= require_tree .
  *= require_self
  */
+body {
+	color: #454545;
+}
 
 .margin-bottom-20px {
 	margin-bottom: 20px;
@@ -21,6 +24,21 @@
 
 .margin-left-20px {
 	margin-left: 30px;
+}
+
+.cover-photo { 
+   position: relative; 
+   width: 100%;
+}
+
+.city-title { 
+   position: absolute;
+   color: rgb(255, 255, 255);
+   font-size: 16px;
+   font_weight: bold;
+   top: 307px; 
+   left: 30px; 
+   width: 100%; 
 }
 
 .user-post-header {
@@ -33,12 +51,13 @@
 }
 
 .user-post {
-	margin-left: 30px;
-	margin-bottom: 20px;
-	padding: 20px 20px 20px 30px;
-	background: #D0FFDE;
-	border-radius: 10px;
-	box-shadow: 10px 10px 5px #888888;
+    margin-left: 80px;
+    margin-bottom: 20px;
+    padding: 20px 20px 20px 30px;
+    background: #e3e3e3;
+    color: rgb(255, 255, 255);
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px #888888;
 }
 
 .edit-post-text-area {
