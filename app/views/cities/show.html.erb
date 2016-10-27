@@ -4,7 +4,7 @@
 			<%= image_tag(@city.image_url, :class => "cover-photo img-responsive", :id => "#{@city.name}") %>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row margin-bottom-20px">
 		<div class="col-md-12 show-container">
 			<h2 class="explore-text"> Explore Tips from <%= @city.name %>! </h2>
 			<% if current_user %>
@@ -17,12 +17,12 @@
 		<div class="row">
 			<div class="col-md-12 blog-comment">
 				<div class="row">
-					<div class="col-md-3" id="user-section">
-						<div>
-			  			<%= image_tag user.photo(:small), class: "img-responsive" %>
-			 			</div>
-					</div>
-					<div class="col-md-8 user-post">
+					<div class="col-md-12 city-user-post">
+						<div class="col-md-3" id="user-section">
+							<div>
+				  			<%= image_tag user.photo(:small), class: "img-responsive" %>
+				 			</div>
+						</div>
 						<a href="/users/<%= user.id %>/posts/<%= post.id %>">
 							<h4 class="user-post-header"><%= post.title %></h4>
 						</a>
