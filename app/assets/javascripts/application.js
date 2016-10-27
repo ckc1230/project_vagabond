@@ -18,18 +18,22 @@
 //= require turbolinks
 
 $( document ).on("turbolinks:load",function() {
-  
+    //Remove all data-disable-with attributes on turbolinks load
+    $.each($("[data-disable-with]"), function(index, el) {
+        $(el).removeAttr("data-disable-with");
+    });
+
   hideDisplaysExceptFirstOne();
   $('.back-arrow').on('click', scrollBackThroughDisplays);
   $('.forward-arrow').on('click', scrollForwardThroughDisplays);
-  
+
   $('h1').on('click', function(){
   	$(location).attr('href', "/")
   });
 
   $('#new_user').on('submit', signUp);
   $('#login_form').on('submit', signIn);
-  $('#new_post').on('submit', newPost); 
+  $('#new_post').on('submit', newPost);
 
   $('#user-edit-button').on('click', function() {
     $('#user-edit').toggle();
@@ -72,7 +76,7 @@ function hideDisplaysExceptFirstOne(){
       if(i !== cityIndex){
         $(cityArray[i]).toggle();
       }
-    }       
+    }
   }
 }
 
@@ -80,7 +84,7 @@ function scrollBackThroughDisplays(){
   var cityArray = $('.city-display');
   $(cityArray[cityIndex]).toggle();
   if(cityIndex > 0){
-    cityIndex--;    
+    cityIndex--;
   }
   else{
     cityIndex = cityArray.length - 1;
@@ -167,6 +171,10 @@ function newPost(event){
 		}
 	};
 	console.log(data)
+
+    //Disable the button on submit
+    $(':submit').prop("disabled", true);
+
 	$.ajax({
 		url: "/posts/new_post",
 		type: "POST",
@@ -176,6 +184,7 @@ function newPost(event){
 		},
 		error: function(){
 			$('.error').remove();
+            //Re-enable the submit button if validations fail
 			$(':submit').prop("disabled", false);
 			$('#new-post-modal').find('.modal-body').prepend("<p class='error'>please fix issues with post and resubmit</p>")
 		}
