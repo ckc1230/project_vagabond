@@ -46,6 +46,18 @@ $( document ).on("turbolinks:load",function() {
   $('#login_form').on('submit', signIn);
   $('#new_post').on('submit', newPost);
 
+  $('#login-link').on('click', function(event){
+  	event.preventDefault();
+  	$('#sign-up-modal').modal('toggle');
+  	$('#login-modal').modal('toggle');
+  });
+
+  $('#sign-up-link').on('click', function(event){
+  	event.preventDefault();
+  	$('#login-modal').modal('toggle');
+  	$('#sign-up-modal').modal('toggle');
+  });
+
   hideImagesExceptFirstOne();
 });
 
