@@ -47,7 +47,29 @@ $( document ).on("turbolinks:load",function() {
 	  $(this).closest('.user-post').find('.edit-post-text-form').toggle();
 	  $(this).closest('.user-post').find('.user-post-info').toggle();
 	  $(this).closest('.user-post').find('.post-footer').toggle();
-	}) 
+	});
+
+  $('.back-arrow').on('click', scrollBackThroughImages);
+  $('.forward-arrow').on('click', scrollForwardThroughImages);
+
+  $('#new_user').on('submit', signUp);
+  $('#login_form').on('submit', signIn);
+  $('#new_post').on('submit', newPost);
+
+  $('#login-link').on('click', function(event){
+  	event.preventDefault();
+  	$('#sign-up-modal').modal('toggle');
+  	$('#login-modal').modal('toggle');
+  });
+
+  $('#sign-up-link').on('click', function(event){
+  	event.preventDefault();
+  	$('#login-modal').modal('toggle');
+  	$('#sign-up-modal').modal('toggle');
+  });
+
+  hideImagesExceptFirstOne();
+
 });
 
 var cityIndex = 0
@@ -148,11 +170,12 @@ function newPost(event){
 	event.preventDefault();
 	var data = {
 		post: {
-			title: $('#post_title').val(),
-			post_text: $('#post_post_text').val(),
-			city_id: $('#post_city_id').val()
+			title: $('#new-post-modal').find('#post_title').val(),
+			post_text: $('#new-post-modal').find('#post_post_text').val(),
+			city_id: $('#new-post-modal').find('#post_city_id').val()
 		}
 	};
+	console.log(data)
 	$.ajax({
 		url: "/posts/new_post",
 		type: "POST",
