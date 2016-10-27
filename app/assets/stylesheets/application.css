@@ -85,6 +85,10 @@ blockquote {
 	margin-right: 10px;
 }
 
+.btn-danger {
+	background-color: #FE7B76;
+}
+
 #user-edit {
 	background: #fff5ee;
 	margin-top: 20px;
@@ -98,6 +102,9 @@ blockquote {
 	width: 35px;
 	display: inline-block;
 	margin-right: 20px;
+}
+.btn-success {
+	background-color: #008080;
 }
 
 .user-blockquote {
