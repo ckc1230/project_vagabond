@@ -18,26 +18,36 @@
 //= require turbolinks
 
 $( document ).on("turbolinks:load",function() {
+  
+  hideDisplaysExceptFirstOne();
+  $('.back-arrow').on('click', scrollBackThroughDisplays);
+  $('.forward-arrow').on('click', scrollForwardThroughDisplays);
+  
+  $('h1').on('click', function(){
+  	$(location).attr('href', "/")
+  });
+
+  $('#new_user').on('submit', signUp);
+  $('#login_form').on('submit', signIn);
+  $('#new_post').on('submit', newPost); 
+
   $('#user-edit-button').on('click', function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
   });
+
 	$('#cancel-edit-button').on('click', function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
-    $
-  });
-  $('h1').on('click', function(){
-  	$(location).attr('href', "/")
   });
 
 	$('.post-edit-button').on('click', function() {
 	  $(this).closest('.user-post').find('.edit-post-text-form').toggle();
 	  $(this).closest('.user-post').find('.user-post-info').toggle();
 	  $(this).closest('.user-post').find('.post-footer').toggle();
-	})
+	});
 
   $('.back-arrow').on('click', scrollBackThroughImages);
   $('.forward-arrow').on('click', scrollForwardThroughImages);
@@ -59,44 +69,46 @@ $( document ).on("turbolinks:load",function() {
   });
 
   hideImagesExceptFirstOne();
+
 });
 
-var photoIndex = 0 
-function scrollBackThroughImages(){
-	var photoArray = $('.cover-photo');
-	$(photoArray[photoIndex]).toggle();
-	if(photoIndex > 0){
-		photoIndex--;	
-	}
-	else{
-		photoIndex = photoArray.length - 1;
-	}
-	$(photoArray[photoIndex]).toggle();
+var cityIndex = 0
+
+function hideDisplaysExceptFirstOne(){
+  var cityArray = $('.city-display');
+  if (cityArray.length > 1) {
+    for (i = 0; i < cityArray.length; i++){
+      if(i !== cityIndex){
+        $(cityArray[i]).toggle();
+      }
+    }       
+  }
 }
 
-function scrollForwardThroughImages(){
-	var photoArray = $('.cover-photo');
-	$(photoArray[photoIndex]).toggle();
-	if(photoIndex < photoArray.length - 1){
-		photoIndex++;
-	}
-	else {
-		photoIndex = 0;
-	}
-	$(photoArray[photoIndex]).toggle();
+function scrollBackThroughDisplays(){
+  var cityArray = $('.city-display');
+  $(cityArray[cityIndex]).toggle();
+  if(cityIndex > 0){
+    cityIndex--;    
+  }
+  else{
+    cityIndex = cityArray.length - 1;
+  }
+  $(cityArray[cityIndex]).toggle();
 }
 
-function hideImagesExceptFirstOne(){
-	var photoArray = $('.cover-photo');
-	if (photoArray.length > 1) {
-		for (i = 0; i < photoArray.length; i++){
-			if(i !== photoIndex){
-				$(photoArray[i]).toggle();
-			}
-		}		
-	}
+function scrollForwardThroughDisplays(){
+  var cityArray = $('.city-display');
+  $(cityArray[cityIndex]).toggle();
+  if(cityIndex < cityArray.length - 1){
+    cityIndex++;
+  }
+  else {
+    cityIndex = 0;
+  }
+  $(cityArray[cityIndex]).toggle();
 }
-	
+
 function show_sign_up_modal(){
 	$('#sign-up-modal').toggle();
 	$('#sign-up-modal').toggle();
@@ -178,4 +190,3 @@ function newPost(event){
 		}
 	});
 }
-
