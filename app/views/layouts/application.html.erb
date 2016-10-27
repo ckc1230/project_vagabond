@@ -21,7 +21,7 @@
         	<header> <h1>Trekkster</h1>
           <% if current_user %>
             <%= link_to "Log Out", login_path, method: :delete, :class => "link pull-right" %>
-            <%= link_to "Profile", user_path(current_user), :class => "link pull-right" %>
+            <%= link_to "My Profile", user_path(current_user), :class => "link pull-right" %>
           <% else %>
           	<%= link_to "Sign In", "#login-modal", "data-toggle" => "modal", :class => "link pull-right" %> 
             <%= link_to "Sign Up", "#sign-up-modal", "data-toggle" => "modal", :class => "link pull-right" %>
