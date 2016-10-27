@@ -27,7 +27,6 @@ $( document ).on("turbolinks:load",function() {
     $('#user-edit').toggle();
     $('#user-info').toggle();
     $('#user-edit-button').toggle();
-    $
   });
   $('h1').on('click', function(){
   	$(location).attr('href', "/")

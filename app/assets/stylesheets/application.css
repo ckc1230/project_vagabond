@@ -28,17 +28,16 @@
 }
 
 #user-section {
-	border: 1px solid #FFB8B1;
-	padding: 20px;
+	padding: 0px 20px 20px 20px;
 }
 
 .user-post {
-	margin-left: 30px;
+	margin-left: 80px;
 	margin-bottom: 20px;
 	padding: 20px 20px 20px 30px;
-	background: #D0FFDE;
-	border-radius: 10px;
-	box-shadow: 10px 10px 5px #888888;
+	background: lightgrey;
+	border-radius: 3px;
+	box-shadow: 2px 2px 5px #888888;
 }
 
 .edit-post-text-area {
@@ -75,6 +74,27 @@
 	width: 35px;
 	display: inline-block;
 	margin-right: 20px;
+}
+
+.user-blockquote {
+	border-left: 10px solid beige;
+}
+
+.blockquote-quote {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.user-blockquote::before {
+  content: "\201C"; /*Unicode for Left Double Quote*/
+  
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+  
+  display: inline-block;
 }
 
 .no-margin-no-padding {
