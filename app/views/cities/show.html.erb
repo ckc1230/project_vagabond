@@ -6,7 +6,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12 show-container">
-			<h2> Explore Tips from <%= @city.name %>! </h2>
+			<h2 class="explore-text"> Explore Tips from <%= @city.name %>! </h2>
 			<% if current_user %>
 				<%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "link pull-right" %>
 			<% end %>

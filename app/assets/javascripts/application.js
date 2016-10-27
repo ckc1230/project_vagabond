@@ -58,16 +58,6 @@ $( document ).on("turbolinks:load",function() {
   	$('#sign-up-modal').modal('toggle');
   });
 
-  $('.sign-up-button').on('click', function(event){
-  	event.preventDefault();
-  	$('#sign-up-modal').modal('toggle');
-  });
-
-  $('.log-in-button').on('click', function(event){
-  	event.preventDefault();
-  	$('#login-modal').modal('toggle');
-  });
-
   hideImagesExceptFirstOne();
 });
 
@@ -168,11 +158,12 @@ function newPost(event){
 	event.preventDefault();
 	var data = {
 		post: {
-			title: $('#post_title').val(),
-			post_text: $('#post_post_text').val(),
-			city_id: $('#post_city_id').val()
+			title: $('#new-post-modal').find('#post_title').val(),
+			post_text: $('#new-post-modal').find('#post_post_text').val(),
+			city_id: $('#new-post-modal').find('#post_city_id').val()
 		}
 	};
+	console.log(data)
 	$.ajax({
 		url: "/posts/new_post",
 		type: "POST",
