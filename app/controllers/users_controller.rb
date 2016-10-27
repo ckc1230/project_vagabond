@@ -3,7 +3,7 @@ class UsersController < ApplicationController
  
 	def show
 		@user = User.friendly.find(params[:id])
-		@posts = @user.posts.paginate(:page => params[:page], :per_page => 3)
+		@posts = @user.posts.order('created_at DESC').paginate(:page => params[:page], :per_page => 3)
 		@posted_cities_id = get_cities_id
 		@posted_cities = get_cities(@posted_cities_id)
 		@post_count = count_occurences

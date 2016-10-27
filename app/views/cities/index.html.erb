@@ -8,7 +8,12 @@
 					<div class="arrows"> <span class="back-arrow"> &#9664</span><span class="forward-arrow">&#9654</span>
 
 					<% if city.posts.length > 0 %>
-					<blockquote>"<%= city.posts.first.post_text %>"</blockquote>
+					<% city_blockquote = city.posts.order("RANDOM()").first  %>
+					<blockquote>"<%= city_blockquote.post_text %>"
+						<footer class="blockquote-footer">
+							<%= User.find(city_blockquote.user_id).first_name %>
+						</footer>
+					</blockquote>
 					<% end %>
 
 

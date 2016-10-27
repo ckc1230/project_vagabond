@@ -49,14 +49,7 @@ $( document ).on("turbolinks:load",function() {
 	  $(this).closest('.user-post').find('.post-footer').toggle();
 	});
 
-  $('.back-arrow').on('click', scrollBackThroughImages);
-  $('.forward-arrow').on('click', scrollForwardThroughImages);
-
-  $('#new_user').on('submit', signUp);
-  $('#login_form').on('submit', signIn);
-  $('#new_post').on('submit', newPost);
-
-  $('#login-link').on('click', function(event){
+	$('#login-link').on('click', function(event){
   	event.preventDefault();
   	$('#sign-up-modal').modal('toggle');
   	$('#login-modal').modal('toggle');
@@ -67,10 +60,8 @@ $( document ).on("turbolinks:load",function() {
   	$('#login-modal').modal('toggle');
   	$('#sign-up-modal').modal('toggle');
   });
-
-  hideImagesExceptFirstOne();
-
 });
+
 
 var cityIndex = 0
 
