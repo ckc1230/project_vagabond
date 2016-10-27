@@ -19,6 +19,7 @@ Will_paginate<br>
 Paperclip<br>
 BCrypt<br>
 Friendly_id<br>
+Imagemagick
 
 Database: <br>
 Postgresql
