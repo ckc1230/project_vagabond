@@ -6,7 +6,12 @@
 					<%= link_to image_tag(city.image_url, :class => "cover-photo img-responsive", :id => "#{city.name}"), city_path(city) %>
 					<span class="city-title"> <%= city.name %></span>
 					<div class="arrows"> <span class="back-arrow"> &#9664</span><span class="forward-arrow">&#9654</span>
+
+					<% if city.posts.length > 0 %>
 					<blockquote>"<%= city.posts.first.post_text %>"</blockquote>
+					<% end %>
+
+
 					</div>
 				</div>	
 			<% end %>
