@@ -27,12 +27,12 @@ body {
 }
 
 .city-title { 
-  position: absolute;
+  position: relative;
   color: rgb(255, 255, 255);
   font-size: 18px;
   font-weight: bold;
-  top: 360px; 
-  left: 40px; 
+  top: -40px;
+  left: 15px;
   width: 100%; 
 }
 
