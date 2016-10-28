@@ -4,9 +4,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.friendly.find(params[:id])
 		@posts = @user.posts.order('created_at DESC').paginate(:page => params[:page], :per_page => 3)
-		@posted_cities_id = get_cities_id
-		@posted_cities = get_cities(@posted_cities_id)
-		@post_count = count_occurences
+    @posted_cities = @user.posts.map(&:city).uniq
 	end
 
 	def new
@@ -55,32 +53,6 @@ class UsersController < ApplicationController
   end
 
 	private
-
-  def get_cities_id
-    cities_id = [].to_set
-    @user.posts.each do |f|
-      if f.city_id
-        cities_id.add(f.city_id)
-      end
-    end
-    return cities_id
-  end
-  def get_cities(id_array)
-    cities = [].to_set
-    id_array.each do |f|
-      cities.add(City.find(f))
-    end
-    return cities
-  end
-
-  def count_occurences
-    count_occurences = []
-    @posted_cities_id.each do |f|
-      count_occurences << (Post.all.count(f))
-    end
-    return count_occurences
-
-  end
 
 	def user_params
 		params.require(:user).permit(:first_name, :last_name, :current_city, :email, :profile_image, :password, :photo)
