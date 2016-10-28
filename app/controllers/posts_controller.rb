@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
 	skip_before_action :verify_authenticity_token, only: [:verify_new_post]
-	
+
 	def new
 	end
 
 	def create
 		post = current_user
-		.posts
-		.create(post_params)
+        		.posts
+        		.create(post_params)
 
 		if post.valid?
         redirect_to current_user
