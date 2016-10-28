@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	skip_before_action :verify_authenticity_token, only: [:verify_new_post]
+  before_action :set_post, only: [:show, :update, :destroy]
 
 	def new
 	end
@@ -18,19 +19,17 @@ class PostsController < ApplicationController
   end
 
 	def show
-		@user = User.find(params[:user_id])
-		@post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
 		@city = City.find(@post.city_id)
 	end
 
 	def update
-		update_post = Post.find(params[:id])
-		update_post.update(post_params)
+		@post.update(post_params)
 		redirect_to current_user
 	end
 
 	def destroy
-		Post.find(params[:id]).destroy
+    @post.destroy
 		redirect_to user_path(current_user)
 	end
 
@@ -48,5 +47,9 @@ class PostsController < ApplicationController
 	def post_params
 			params.require(:post).permit(:title, :post_text, :city_id)
 	end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
 end
