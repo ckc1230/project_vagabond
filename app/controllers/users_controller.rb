@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.friendly.find(params[:id])
 		@posts = @user.posts.order('created_at DESC').paginate(:page => params[:page], :per_page => 3)
-    @posted_cities = @user.posts.map(&:city).uniq
+    @posted_cities = @user.cities_posted_to
 	end
 
 	def new

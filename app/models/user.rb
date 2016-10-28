@@ -17,4 +17,10 @@ class User < ApplicationRecord
 	def generate_custom_slug
     "#{first_name}_#{last_name}"
   end
+
+  # cities user has posted to
+  def cities_posted_to
+    self.posts.map(&:city).uniq
+  end
+
 end
