@@ -10,7 +10,7 @@
                 <p><strong>Joined: </strong><span class="pull-right"><%= @user.created_at.strftime("%b. %d, %Y") %></span></p>
                 <p class="no-margin-no-padding"><strong>Posted In: </strong></p>
                 <div class="list-unstyled text-right">
-                    <% @posted_cities.each do |f| %>
+                    <% @user.cities_posted_to.each do |f| %>
                         <li class="align-right"><%= link_to f.name, f %></li>
                     <% end %>
                 </div>
@@ -40,7 +40,7 @@
             <%= link_to "New Post", "#new-post-modal", "data-toggle" => "modal", :class => "btn-success btn-block btn"%>
             <% end %>
         </div>
-        
+
         <div class="col-md-8">
         <!--One Post-->
         <% @posts.each do |post|  %>
@@ -71,7 +71,7 @@
 
                         <% if @user === current_user %>
                             <div class="post-button pull-right">
-                                <%= link_to "Delete", delete_post_path(user_id: @user.id, id: post.id), 
+                                <%= link_to "Delete", delete_post_path(user_id: @user.id, id: post.id),
                                     method: :delete, class: "btn btn-sm btn-danger" %>
                             </div>
                             <div class="post-button pull-right">
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <% end %>
-        <% end  %> 
+        <% end  %>
         </div>
         <!--/One Post-->
     </div>
