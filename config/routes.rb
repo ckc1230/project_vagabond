@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 	root "cities#index"
 
 	resources :cities
-	resources :users do
+	resources :users do # TODO: add `shallow: true`
 		resources :posts
 
 		collection do
 			post '/validate_user', to: "users#validate_user"
-		end 
+		end
 	end
 
 	post '/login',					to: "sessions#create",				as: "login"
